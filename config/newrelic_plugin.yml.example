@@ -1,0 +1,40 @@
+newrelic:
+  # Update with your New Relic account license key:
+  license_key: 'YOUR_LICENSE_KEY_HERE'
+
+  # Set to '1' for verbose output, remove for normal output.
+  # All output goes to stdout/stderr.
+  verbose: 1
+
+# Agent Configuration:
+agents:
+  postgresql:
+    -
+        # description is a way to name a given postgres instance being monitored
+        # It is suggested that you give unique description for each instance
+        description: "postgresql"
+
+        # connection_str describes connection information that needs to be passed to
+        # the plugin to be able to connect to the given postgres instance
+        # example: "host=<host> hostaddr=<hostaddr> port=<port> dbname=<dbname> user=<user> password=<password>
+        #     connect_timeout=<timeout> sslmode=<sslmode> krbsrvname=<krbsrvname> gsslib=<gsslib> service=<service>"
+        # Note: The fields in the connection string are optional and you can add the fields as per your server
+        #     configuration
+        # Note: It is strongly advised that instead of providing password in the configuration field, you use either
+        #     the ~/.pgpass file or PGPASSWORD environment variable to ensure the password remains secure.
+        connection_str: "host=localhost port=5432 dbname=postgres user=postgres"
+
+        # set to 'true' if you want to collect database statistics, 'false' otherwise; default 'false'
+        get_db_stat: true
+
+        # set to 'true' if you want to collect database size, 'false' otherwise; default 'false'
+        get_db_size: true
+
+        # set to 'true' if you want to collect tablespace size, 'false' otherwise; default 'false'
+        get_tblspc_size: true
+
+        # set to 'true' if you want to collect bg writer statistics, 'false' otherwise; default 'false'
+        get_bg_writer_stat: true
+
+        # set to 'true' if you want to collect lock info statistics, 'false' otherwise; default 'false'
+        get_lock_info_stat: true
