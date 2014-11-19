@@ -418,9 +418,8 @@ module PostgreSqlAgent
 	NewRelic::Plugin::Config.config_file= File.dirname(__FILE__) + "/config/newrelic_plugin.yml"
 
 	# Register this agent.
-	puts "hello"
 	NewRelic::Plugin::Setup.install_agent :postgresql_agent, PostgreSqlAgent
-  puts "world"
+
 	# Launch the agent; this never returns.
 	NewRelic::Plugin::Run.setup_and_run
 end
