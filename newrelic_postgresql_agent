@@ -21,6 +21,7 @@ module PostgreSqlAgent
 
 	# Agent class definition
 	class Agent < NewRelic::Plugin::Agent::Base
+
 		agent_guid "com.enterprisedb.newrelic.postgresql"
 		agent_config_options :description,:connection_str,:get_db_stat,:get_db_size,:get_tblspc_size,:get_bg_writer_stat,:get_lock_info_stat
 		agent_human_labels("PostgreSQL") { "#{description}" }
@@ -414,11 +415,12 @@ module PostgreSqlAgent
 	end
 
 	# Set the configuration file
-	NewRelic::Plugin::Config.config_file="config/newrelic_plugin.yml"
+	NewRelic::Plugin::Config.config_file= File.dirname(__FILE__) + "/config/newrelic_plugin.yml"
 
 	# Register this agent.
-	NewRelic::Plugin::Setup.install_agent :postgresql,PostgreSqlAgent
-
+	puts "hello"
+	NewRelic::Plugin::Setup.install_agent :postgresql_agent, PostgreSqlAgent
+  puts "world"
 	# Launch the agent; this never returns.
 	NewRelic::Plugin::Run.setup_and_run
 end
