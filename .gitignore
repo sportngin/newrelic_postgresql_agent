@@ -1,3 +1,3 @@
 .DS_Store
 config/newrelic_plugin.yml
-newrelic_sidekiq_agent.pid
+newrelic_postgresql_agent.pid
